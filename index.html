@@ -2,17 +2,27 @@
 <html>
 
 <head>
-	<meta name="generator" content="Hugo 0.70.0" /><meta charset="UTF-8">
+	<meta name="generator" content="Hugo 0.120.3"><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
 <link rel="icon" href=/DS_blue.png type="image/gif">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
 
 
 <link rel="stylesheet" href="/css/font.css" media="all">
@@ -22,17 +32,15 @@
 <meta property="og:title" content="Dominika Strawska" />
 <meta property="og:description" content="Dominika Strawska Personal Webpage" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://strawskadominika.github.io/" />
-<meta property="og:updated_time" content="2022-07-16T12:19:27+01:00" /><meta property="og:site_name" content="Dominika Strawska" />
+<meta property="og:url" content="http://strawskadominika.github.io/" /><meta property="og:site_name" content="Dominika Strawska" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dominika Strawska"/>
 <meta name="twitter:description" content="Dominika Strawska Personal Webpage"/>
 
 
-
-<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all">
-<link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
 <link rel="stylesheet" href="/css/footer.css" media="all">
 
 
@@ -64,6 +72,33 @@
         line-height: 1.5;
         text-align: left;
     }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
 </style>
 
 <meta name="description" content=Dominika&#32;Strawska&#32;Personal&#32;Webpage>
@@ -79,25 +114,32 @@ Dominika Strawska
   </title>
 </head>
 
-<body class="light" onload="loading()">
+<body class="light">
   
   
-  <script src="/bootstrap-5/js/bootstrap.bundle.js"></script>
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
 </script>
 
 
 
 <header>
-    <nav class="pt-3 navbar navbar-expand-lg">
+    <nav class="pt-3 navbar navbar-expand-lg ">
         <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
             
             <a class="navbar-brand primary-font text-wrap" href="/">
@@ -107,6 +149,8 @@ Dominika Strawska
                 Dominika Strawska
                 
             </a>
+
+            
 
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -120,8 +164,12 @@ Dominika Strawska
             <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
                 <ul class="navbar-nav ms-auto text-center">
                     
+
+                    
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#about" aria-label="about">About</a>
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
                     </li>
                     
 
@@ -136,36 +184,41 @@ Dominika Strawska
                     
                     <li class="nav-item navbar-text">
                         <a class="nav-link" href="/#contact"
-                            aria-label="contact">Contact</a>
+                            aria-label="contact">
+                            Contact
+                        </a>
                     </li>
                     
 
                     
                     
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
                 </ul>
 
-                
-                
-                <div class="text-center">
-                    <button id="theme-toggle">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
-                </div>
-            
-                
             </div>
         </div>
     </nav>
@@ -174,7 +227,7 @@ Dominika Strawska
 <section id="hero" class="py-5 align-middle">
     <div class="container px-3 px-sm-5 px-md-5 px-lg-5 pt-lg-3">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8 content" id="primary-font">
+            <div class="col-sm-12 col-md-12 col-lg-8 content " id="primary-font">
                 <span class="subtitle">
                     
                 </span>
@@ -185,15 +238,15 @@ Dominika Strawska
                     Digital Marketing Specialist
                 </h3>
                 <p class="hero-content">
-                    I am passionate about developing creative, high-quality marketing and graphics.
-Currently, I work as a junior e-marketing specialist at <a href="https://cloudservices.pl/en/about-us/">Cloud Services</a>, where I coordinate campaigns within the affiliate network.
-Are you ready to cooperate?
+                    I am passionate about developing creative, high-quality marketing and graphics. <br>
+In my current role at <a href="https://www.home.cern/">CERN</a> in Switzerland, I am responsible for coordinating and promoting the international engineering <a href="https://icec29-icmc2024.web.cern.ch/">conference</a> taking place in Geneva. <br>
+I am looking forward to collaborate on this event!
                 </p>
                 <div class="row">
                     <div class="col-auto h-100">
                         
                     </div>
-                    <div class="col-auto px-0 h-100"><span id="loading-icons" style="display: none;">
+                    <div class="col-auto px-0 h-100"><span>
     
     <span class="px-1">
         <a href="mailto:strawska.dominika@icloud.com" target="_blank" class="btn social-icon">
@@ -220,9 +273,9 @@ Are you ready to cooperate?
             </div>
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="row justify-content-center">
-                    <div class="col-sm-12 col-md-9 pt-5 image px-5 px-md-5 px-lg-0 text-center">
-                        <img src="/images/domi.jpg" 
-                            class="img-thumbnail mx-auto" 
+                    <div class="col-sm-12 col-md-9 pt-5 image  px-5 px-md-5 px-lg-0 text-center">
+                        <img src="/images/domi.jpg"
+                            class="img-thumbnail mx-auto"
                             alt=""
                         >
                     </div>
@@ -230,6 +283,7 @@ Are you ready to cooperate?
             </div>
         </div>
     </div>
+    
     <div class="hero-bottom-svg d-md-block d-lg-block d-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="201" height="201" viewBox="0 0 201 201">
             <g id="Group_1168" data-name="Group 1168" transform="translate(-384 -1392)">
@@ -492,6 +546,7 @@ Are you ready to cooperate?
             </g>
         </svg>
     </div>
+    
 </section>
 
 <section id="about" class="py-0 py-sm-5">
@@ -501,14 +556,15 @@ Are you ready to cooperate?
             
             <div class="col-sm-12 col-md-8 col-lg-4 mb-5 mb-sm-0 mb-md-5 mb-lg-0 d-none d-sm-none d-md-block">
                 <div class="image d-flex px-5">
-                    <img src="/images/domi_2.jpg" class="img-thumbnail mx-auto rounded-circle" alt="">
+                    <img src="/images/domi2.jpg" class="img-thumbnail mx-auto rounded-circle" alt="">
                 </div>
             </div>
             
             <div class="col-sm-12 col-md-12 col-lg-8 content">
                 <p>I am a digital marketing specialist with a passion for creative and high-quality content.
 I hold bachelor&rsquo;s and master&rsquo;s degrees in Economics with a specialization in E-Commerce from <a href="https://en.ug.edu.pl/university/about-us">University of Gdańsk</a>.</p>
-<p>Currently, I work at <a href="https://cloudservices.pl/en/about-us/">Cloud Services</a>, where I develop the affiliate network and create graphical content related to marketing. Previously, I have been a group coordinator at the <a href="https://www.efcongress.com/en/">European Financial Congress</a>. Additionally, I am experienced as a freelancer working on independent marketing in the past.</p>
+<p>Currently, I work at <a href="https://www.home.cern/">CERN</a>, where I contribute to organizing and promoting the international cryogenics conference. Please visit our <a href="https://icec29-icmc2024.web.cern.ch/">website</a> or contact me directly to learn more about this event!</p>
+<p>Previously, I was a marketing specialist at <a href="https://cloudservices.pl/en/about-us/">Cloud Services</a>, developing the affiliate network and creating graphical content. In the past, I also served as a group coordinator at the <a href="https://www.efcongress.com/en/">European Financial Congress</a> and gained experience as a freelancer working on independent marketing projects.</p>
 <p>Usage of modern technologies motivates me to deliver projects that look great, feel fantastic, and function correctly. I believe that digital marketing is a crucial element of modern business.</p>
 
 
@@ -540,16 +596,17 @@ I hold bachelor&rsquo;s and master&rsquo;s degrees in Economics with a specializ
 </section>
 
 
+
 <section id="contact" class="py-5">
     <div class="container">
-        <h3 class="text-center">Get In Touch</h3>
+        <h3 class="text-center">Get in Touch</h3>
         <div class="px-0 px-md-5 px-lg-5">
             <div class="row justify-content-center px-md-5">
                 <div class="col-md-8 py-3">
                     <div class="text-center">
                         <p>I like meeting new people and starting innovative projects.</p>
-<p>At the moment I&rsquo;m looking for publishers and advertisers to join our affiliate network :)</p>
-<p>Let&rsquo;s meet over digital coffee and discuss the new ideas together!</p>
+<p>At the moment I&rsquo;m looking to collaborate on organizing a large-scale conference :)</p>
+<p>Let&rsquo;s meet over digital coffee and discuss our ideas together!</p>
 
                     </div>
                     
@@ -563,17 +620,27 @@ I hold bachelor&rsquo;s and master&rsquo;s degrees in Economics with a specializ
             </div>
         </div>
     </div>
+    <div id="contact-form-status"></div>
 </section>
 
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+  <symbol id="info-fill" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </symbol>
+  <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+</svg>
+
   </div><footer>
-    <div class="container py-3" id="recent-posts">
     
-    
-    <div class="row justify-content-center">
-        
-    </div>
-    
-</div><div class="text-center pt-2">
+ 
+
+<div class="text-center pt-2">
     
 
     
@@ -592,7 +659,7 @@ I hold bachelor&rsquo;s and master&rsquo;s degrees in Economics with a specializ
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2022  Dominika Strawska
+            &copy; 2023  All Rights Reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">
@@ -602,13 +669,13 @@ I hold bachelor&rsquo;s and master&rsquo;s degrees in Economics with a specializ
             </div>
         </div>
     </div>
-</div></footer>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
 
@@ -631,18 +698,20 @@ I hold bachelor&rsquo;s and master&rsquo;s degrees in Economics with a specializ
 
 </script>
 
-<script>
-    let loadingIcons;
 
-    function loading() {
-        myVar = setTimeout(showPage, 100);
-    }
 
-    function showPage() {
-        try{
-            document.getElementById("loading-icons").style.display = "block";
-        } catch(err) {}
-    }
-</script></body>
+
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
 
 </html>
